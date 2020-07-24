@@ -13,6 +13,11 @@
     height: 200px;
     border: 1px solid #333;
   }
+  #btn {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+  }
 </style>
 
 <body>
@@ -24,6 +29,18 @@
     <h2>Compteur:{{ compteur }}</h2>
     <canvas v-on:mousemove="coords"></canvas>
     <p>{{ x }} / {{ y }}</p>
+
+    <div v-on:click.once="foo">
+      <p>lorem ipsum
+        <button id="btn" v-on:click.stop="foo">Clique moi</button>
+      </p>
+    </div>
+
+    <form v-on:submit.prevent="foo">
+      <button>Valider</button>
+    </form>
+    
+    
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -37,11 +54,14 @@
         y: 0
       },
       methods: {
+        foo: function() {
+          console.log("cliqué");
+        },
         augmente: function() {
           this.compteur++;
         },
         baisse: function() {
-          this.compteur++;
+          this.compteur--;
         },
         coords: function(e) {
           // console.log(e);
