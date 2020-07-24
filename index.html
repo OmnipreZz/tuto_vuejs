@@ -11,6 +11,7 @@
   <div id="mon-app">
     <h1>Vue Js Cours</h1>
     <p>{{ txt }}</p>
+    <p>{{ presentation() }}</p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -19,7 +20,13 @@
     new Vue({
       el: '#mon-app',
       data: {
-        txt: 'hello World'
+        txt: 'hello World',
+        nb: 10
+      },
+      methods: {
+        presentation: function() {
+          return this.txt + this.nb;
+        }
       }
     })
 
