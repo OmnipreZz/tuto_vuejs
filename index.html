@@ -8,16 +8,7 @@
 </head>
 
 <style>
-  canvas {
-    width: 300px;
-    height: 200px;
-    border: 1px solid #333;
-  }
-  #btn {
-    position: fixed;
-    top: 50px;
-    right: 50px;
-  }
+
 </style>
 
 <body>
@@ -27,20 +18,9 @@
     <button v-on:click="augmente">Augmente</button>
     <button v-on:click="baisse">Baisse</button>
     <h2>Compteur:{{ compteur }}</h2>
-    <canvas v-on:mousemove="coords"></canvas>
-    <p>{{ x }} / {{ y }}</p>
-
-    <div v-on:click.once="foo">
-      <p>lorem ipsum
-        <button id="btn" v-on:click.stop="foo">Clique moi</button>
-      </p>
-    </div>
-
-    <form v-on:submit.prevent="foo">
-      <button>Valider</button>
-    </form>
     
-    
+    <p>Ton nom</p>
+    <input type="text" v-on:keyup.enter="inpFunc">
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -50,23 +30,18 @@
       el: '#mon-app',
       data: {
         compteur : 0,
-        x: 0,
-        y: 0
       },
       methods: {
-        foo: function() {
-          console.log("cliqué");
-        },
+
         augmente: function() {
           this.compteur++;
         },
         baisse: function() {
           this.compteur--;
         },
-        coords: function(e) {
-          // console.log(e);
-          this.x = e.offsetX;
-          this.y = e.offsetY;
+
+        inpFunc: function() {
+          console.log("tu as appuyé sur entrer");
         }
       }
     })
