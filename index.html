@@ -15,13 +15,14 @@
 
   <div id="mon-app">
     <h1>Vue Js Cours</h1>
-    <button v-on:click="augmente">Augmente</button>
-    <button v-on:click="baisse">Baisse</button>
+    <button v-on:click="compteur++">Augmente</button>
+    <button v-on:click="compteur--">Baisse</button>
     <h2>Compteur:{{ compteur }}</h2>
-    
-    <p>Ton nom</p>
-    <input type="text" v-model="valeur">
-    <p>{{ valeur }}</p>
+
+    <h3>{{ compteur ? 'il est true' : 'il est false' }}</h3>
+
+    <p v-html="htmlBrut">{{ htmlBrut }}</p>
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -31,7 +32,7 @@
       el: '#mon-app',
       data: {
         compteur : 0,
-        valeur: ""
+        htmlBrut: '<p> Mon HTML Brut </p>'
       },
       methods: {
 
