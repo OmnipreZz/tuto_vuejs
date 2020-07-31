@@ -29,16 +29,12 @@
   <div id="mon-app">
     <h1>Vue Js Cours</h1>
     <button @click="toggleBox = !toggleBox"> Toggle la couleur</button>
- 
-    <div v-if="toggleBox" class="box red"></div>
-    <p v-else="toggleBox">sinon</p>
 
-    <template v-if="toggleBox">
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, et.</p>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, et.</p>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, et.</p>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, et.</p>
-    </template>
+    <ul>
+      <li v-for="n in tableau"> {{ n }} </li>
+    </ul>
+ 
+
 
     
   </div>
@@ -49,7 +45,8 @@
     new Vue({
       el: '#mon-app',
       data: {
-       toggleBox: true
+       toggleBox: true,
+       tableau: [1,2,3,4,5]
       },
     })
 
