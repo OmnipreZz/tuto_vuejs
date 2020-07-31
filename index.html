@@ -31,6 +31,9 @@
     <button @click="toggleColor = !toggleColor"> Toggle la couleur</button>
     <div :class="[objCSS, toggleColor ? 'bordure' : '']"></div>
 
+    <p :style="{backgroundColor: 'blue'}">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque, iste?</p>
+    <p :style="monStyle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque, iste?</p>
+
   
   </div>
 
@@ -41,13 +44,22 @@
       el: '#mon-app',
       data: {
        toggleColor: false,
-       box: true
+       box: true,
+       color: 'lightblue',
+       width: 200
       },
       computed: {
-        objCSS: function() {
+        objCSS: function(){
           return {
             red: this.toggleColor,
             box: true
+          }
+        },
+
+        monStyle: function(){
+          return {
+            backgroundColor : this.color,
+            width: this.width + "px"
           }
         }
       }
