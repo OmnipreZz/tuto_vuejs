@@ -31,7 +31,17 @@
     <button @click="toggleBox = !toggleBox"> Toggle la couleur</button>
 
     <ul>
-      <li v-for="n in tableau"> {{ n }} </li>
+      <li v-for="(fruit, i) in tableauFruits">{{ i + 1}} {{ fruit }} </li>
+    </ul>
+
+    <ul>
+      <li v-for="(val, props) in objChat">{{ props }} : {{ val }} </li>
+    </ul>
+
+    <ul>
+      <li v-for="obj in arrObj">
+        <div v-for="(val, props) in obj">{{ props }} : {{ val }} </div>
+      </li>
     </ul>
  
 
@@ -46,7 +56,18 @@
       el: '#mon-app',
       data: {
        toggleBox: true,
-       tableau: [1,2,3,4,5]
+       tableauFruits: ["Fraise","Pomme","Poire"],
+       objChat: {
+         race: 'Persan',
+         age: 3,
+         poids: "3kg"
+       },
+       arrObj: [
+         { race: 'Persan', age: 3, poids: "3kg"},
+         { race: 'Persan', age: 3, poids: "3kg"},
+         { race: 'Persan', age: 3, poids: "3kg"},
+         { race: 'Persan', age: 3, poids: "3kg"},
+       ]
       },
     })
 
