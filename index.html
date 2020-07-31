@@ -41,6 +41,14 @@
           return this.compteurA > 10 ? 'Supérieur à 10' : 'Inférieur à 10';
         }
       },
+      
+      watch: {
+        compteurA: function() {
+          setTimeout(() => {
+            this.compteurA = 0
+          }, 1500)
+        }
+      },
 
       computed: {
         memo:  function() {
