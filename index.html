@@ -18,6 +18,10 @@
     background: crimson;
   }
 
+  .bordure {
+    border: 10px solid #333;
+  }
+
 </style>
 
 <body>
@@ -25,10 +29,7 @@
   <div id="mon-app">
     <h1>Vue Js Cours</h1>
     <button @click="toggleColor = !toggleColor"> Toggle la couleur</button>
-    <div 
-    class="box" 
-    :class="{ red : toggleColor }"
-    ></div>
+    <div :class="[objCSS, toggleColor ? 'bordure' : '']"></div>
 
   
   </div>
@@ -39,7 +40,16 @@
     new Vue({
       el: '#mon-app',
       data: {
-       toggleColor: false
+       toggleColor: false,
+       box: true
+      },
+      computed: {
+        objCSS: function() {
+          return {
+            red: this.toggleColor,
+            box: true
+          }
+        }
       }
     })
 
