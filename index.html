@@ -28,13 +28,19 @@
 
   <div id="mon-app">
     <h1>Vue Js Cours</h1>
-    <button @click="toggleColor = !toggleColor"> Toggle la couleur</button>
-    <div :class="[objCSS, toggleColor ? 'bordure' : '']"></div>
+    <button @click="toggleBox = !toggleBox"> Toggle la couleur</button>
+ 
+    <div v-if="toggleBox" class="box red"></div>
+    <p v-else="toggleBox">sinon</p>
 
-    <p :style="{backgroundColor: 'blue'}">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque, iste?</p>
-    <p :style="monStyle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque, iste?</p>
+    <template v-if="toggleBox">
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, et.</p>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, et.</p>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, et.</p>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, et.</p>
+    </template>
 
-  
+    
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -43,26 +49,8 @@
     new Vue({
       el: '#mon-app',
       data: {
-       toggleColor: false,
-       box: true,
-       color: 'lightblue',
-       width: 200
+       toggleBox: true
       },
-      computed: {
-        objCSS: function(){
-          return {
-            red: this.toggleColor,
-            box: true
-          }
-        },
-
-        monStyle: function(){
-          return {
-            backgroundColor : this.color,
-            width: this.width + "px"
-          }
-        }
-      }
     })
 
   </script>
