@@ -7,69 +7,40 @@
   <title>Tuto_vuejs</title>
 </head>
 
-<style>
-
-  .box {
-    width: 250px;
-    height: 250px;
-    border: 1px solid #333;
-  }
-  .red {
-    background: crimson;
-  }
-
-  .bordure {
-    border: 10px solid #333;
-  }
-
-</style>
-
 <body>
 
-  <div id="mon-app">
-    <h1>Vue Js Cours</h1>
-    <button @click="toggleBox = !toggleBox"> Toggle la couleur</button>
+  <div id="mon-app1">
 
-    <ul>
-      <li v-for="(fruit, i) in tableauFruits">{{ i + 1}} {{ fruit }} </li>
-    </ul>
+  </div>
 
-    <ul>
-      <li v-for="(val, props) in objChat">{{ props }} : {{ val }} </li>
-    </ul>
-
-    <ul>
-      <li v-for="obj in arrObj">
-        <div v-for="(val, props) in obj">{{ props }} : {{ val }} </div>
-      </li>
-    </ul>
- 
-
-
-    
+  <div id="mon-app2">
+    <h1>{{ txt }}</h1>
+    <button @click="func1">Changement</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
 
-    new Vue({
-      el: '#mon-app',
-      data: {
-       toggleBox: true,
-       tableauFruits: ["Fraise","Pomme","Poire"],
-       objChat: {
-         race: 'Persan',
-         age: 3,
-         poids: "3kg"
-       },
-       arrObj: [
-         { race: 'Persan', age: 3, poids: "3kg"},
-         { race: 'Persan', age: 3, poids: "3kg"},
-         { race: 'Persan', age: 3, poids: "3kg"},
-         { race: 'Persan', age: 3, poids: "3kg"},
-       ]
-      },
-    })
+  const ins1 = new Vue({
+    template: '<h1>{{ txt }}</h1>',
+    data: {
+      txt: "Hello app 1"
+    },
+  })
+  ins1.$mount()
+  document.getElementById('mon-app1').appendChild(ins1.$el)
+
+  const ins2 = new Vue({
+    el: '#mon-app2',
+    data: {
+      txt: "Hello app 2"
+    },
+    methods: {
+      func1: function() {
+        ins1.txt = "Je tai changé"
+      }
+    }
+  })
 
   </script>
 
